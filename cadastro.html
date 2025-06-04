@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Javier Cabelo e Estética</title>
+    <!-- CSS do AdminLTE -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/admin-lte@3.2/dist/css/adminlte.min.css">
+    <!-- Font Awesome Icons -->
+    <link href="https://fonts.googleapis.com/css2?family=Pinyon+Script&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Text:ital@0;1&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+
+
+<body class="hold-transition layout-top-nav">
+  <div class="wrapper">
+        <nav class="main-header navbar navbar-expand navbar-light navbar-white">
+            <div class="container">
+                <a href="index.html" class="navbar-brand mr-auto">
+                    <img src="img/Logo 2.2.png" alt="Javier Cabelo & Estética" class="brand-image img-fluid">
+                    <span class="brand-text font-weight-light">Javier</span>
+                </a>
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item">
+                        <a href="index.html" class="nav-link">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="historia.html" class="nav-link">História</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="servicos.html" class="nav-link disabled">Serviços</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="agendamento.html" class="nav-link disabled">Agendamento</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="produtos.html" class="nav-link">Produtos</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="local.html" class="nav-link">Local</a>
+                    </li>
+                </ul>
+                <!-- Ícone de chamada telefônica -->
+                <a href="tel:+551136419604" class="phone-icon nav-item nav-link">
+                    <i class="fas fa-phone"></i>
+                </a>
+                <!-- Botão WhatsApp -->
+                <a class="nav-item nav-link" href="https://wa.me/551138639629" target="_blank">
+                    <i class="fab fa-whatsapp" style="color: #25D366;"></i>
+                </a>
+                <!-- Botão Instagram -->
+                <a class="nav-item nav-link" href="https://www.instagram.com/javiercabeloeestetica" target="_blank">
+                    <i class="fab fa-instagram" style="color: #E1306C;"></i>
+                </a>
+                <!-- Área do Cliente -->
+                <a class="nav-item nav-link" href="#area-cliente" data-toggle="modal" data-target="#loginModal">
+                    <i class="fas fa-user-circle" style="color: #DCDCDC;"></i>
+                </a>
+                <button class="menu-toggle" aria-label="Menu">
+                    ☰
+                </button>
+
+            </div>
+        </nav>
+    <!-- Main Content -->
+    
+    <div class="content">
+      <div class="container">
+        </br>
+        <h2 class="text-center mb-4">Cadastro de Cliente</h2>
+        <form id="cadastro-form">
+          <div class="row">
+            <div class="col-md-6">
+              <div class="form-group">
+                <label for="nome">Nome</label>
+                <input type="text" class="form-control" id="nome" placeholder="Insira seu nome" required>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="form-group">
+                <label for="sobrenome">Sobrenome</label>
+                <input type="text" class="form-control" id="sobrenome" placeholder="Insira seu sobrenome" required>
+              </div>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="apelido">Apelido</label>
+            <input type="text" class="form-control" id="apelido" placeholder="Como quer que a gente te chame?" required>
+          </div>
+          <div class="form-group">
+            <label>Gênero</label>
+            <div class="form-check">
+              <input class="form-check-input" type="radio" name="genero" id="feminino" value="Feminino" required>
+              <label class="form-check-label" for="feminino">Feminino</label>
+            </div>
+            <div class="form-check">
+              <input class="form-check-input" type="radio" name="genero" id="masculino" value="Masculino" required>
+              <label class="form-check-label" for="masculino">Masculino</label>
+            </div>
+            <div class="form-check">
+              <input class="form-check-input" type="radio" name="genero" id="nbinario" value="NBinario" required>
+              <label class="form-check-label" for="feminino">Não Binário</label>
+            </div>
+            <div class="form-check">
+              <input class="form-check-input" type="radio" name="genero" id="ndizer" value="NDizer" required>
+              <label class="form-check-label" for="feminino">Prefiro não dizer</label>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="estado-civil">Estado Civil</label>
+            <select class="form-control" id="estado-civil" required>
+              <option value="">Selecione</option>
+              <option value="Solteiro(a)">Solteiro(a)</option>
+              <option value="Casado(a)">Casado(a)</option>
+              <option value="Divorciado(a)">Divorciado(a)</option>
+              <option value="Viúvo(a)">Viúvo(a)</option>
+            </select>
+          </div>
+          <div class="row">
+            <div class="col-md-6">
+              <div class="form-group">
+                <label for="telefone-fixo">Telefone Fixo</label>
+                <input type="tel" class="form-control" id="telefone-fixo" placeholder="(XX) XXXX-XXXX">
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="form-group">
+                <label for="telefone-movel">Telefone Móvel</label>
+                <input type="tel" class="form-control" id="telefone-movel" placeholder="(XX) XXXXX-XXXX" required>
+              </div>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="email">E-mail</label>
+            <input type="email" class="form-control" id="email" placeholder="Seu melhor e-mail" required>
+          </div>
+          <div class="form-group">
+            <label for="senha">Senha</label>
+            <div class="input-group">
+              <input type="password" class="form-control" id="senha" placeholder="Sua senha" required>
+              <div class="input-group-append">
+                <button type="button" class="btn btn-outline-secondary" id="toggle-senha">
+                  <i class="fas fa-eye"></i>
+                </button>
+              </div>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="data-nascimento">Data de Nascimento</label>
+            <input type="date" class="form-control" id="data-nascimento" required>
+          </div>
+          <div class="form-group">
+            <label for="foto-perfil">Foto de Perfil</label>
+            <div class="custom-file">
+              <input type="file" class="custom-file-input" id="foto-perfil" accept="image/*">
+              <label class="custom-file-label" for="foto-perfil">Escolher arquivo</label>
+            </div>
+            <div class="mt-2">
+              <img id="preview-foto" src="#" alt="Preview da foto" class="img-thumbnail d-none" style="max-width: 150px;">
+            </div>
+          </div>
+          <div class="form-group">
+            <label>Alergias</label>
+            <div class="form-check">
+              <input class="form-check-input" type="checkbox" id="alergia-tinta">
+              <label class="form-check-label" for="alergia-tinta">Tinta de cabelo</label>
+            </div>
+            <div class="form-check">
+              <input class="form-check-input" type="checkbox" id="alergia-esmalte">
+              <label class="form-check-label" for="alergia-esmalte">Esmalte</label>
+            </div>
+            <div class="form-check">
+              <input class="form-check-input" type="checkbox" id="alergia-cera">
+              <label class="form-check-label" for="alergia-cera">Cera</label>
+            </div>
+            <div class="form-check">
+              <input class="form-check-input" type="checkbox" id="alergia-henna">
+              <label class="form-check-label" for="alergia-henna">Henna</label>
+            </div>
+          </div>
+          <button  class="btn btn-danger btn-block">Salvar</button>
+        </form>
+        </br>
+      </div>
+    </div>
+<footer class="main-footer text-white py-4">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4">
+                <h5>Trabalhe Conosco</h5>
+                <p>Envie seu currículo para: 
+                    <a href="mailto:trabalheconosco@javiercabelo.com" class="link-f">trabalheconosco@javiercabelo.com</a>
+                </p>
+            </div>
+            <div class="col-md-4">
+                <h5>Contato</h5>
+                <p><a href="https://maps.app.goo.gl/CXz22Gm6DEB6EUWX8" class="link-f">
+                        Rua Tito, 1725<br>
+                        Vila Romana, São Paulo - SP<br>
+                        05051-001<br>
+                        Telefone: (11) 3641-9604</a>
+                </p>
+            </div>
+            <div class="col-md-4">
+                <h5>Receba Novidades</h5>
+                <form>
+                    <div class="input-group">
+                        <input type="email" class="form-control" placeholder="Seu e-mail">
+                        <div class="input-group-append">
+                            <button class="btn btn-danger" type="submit">Enviar</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <hr class="my-4">
+        <p class="text-center">&copy; 2025 Javier Cabelo & Estética. Todos os direitos reservados.</p>
+    </div>
+</footer>
+
+<!-- Botão WhatsApp Fixo -->
+<a href="https://wa.me/551138639629" target="_blank" class="whatsapp-button">
+    <i class="fab fa-whatsapp"></i>
+</a>  
+  </div>
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.16/jquery.mask.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/admin-lte@3.2/dist/js/adminlte.min.js"></script>
+<script src="js/script.js"></script>  
+</body>
+</html>
