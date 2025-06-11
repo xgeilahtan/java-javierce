@@ -309,6 +309,11 @@
     font-weight: bold;
   }
   
+  /* Formulário de Cadastro */
+  .genero {
+    
+  }
+
   /* Salvar Cadastro */
   
   form button {
@@ -528,3 +533,4 @@
 #myTable tr.header, #myTable tr:hover {
   background-color: #f1f1f1;
 }
+
