@@ -111,3 +111,133 @@ function myFunction() {
         }       
     }
 }
+
+// ========================================================
+// === LÓGICA DA PÁGINA DE AGENDAMENTO ===
+// ========================================================
+$(document).ready(function () {
+
+    // Só executa o código se estivermos na página de agendamento
+    // Isso evita erros em outras páginas do site.
+    if ($('#booking-summary').length === 0) {
+        return;
+    }
+
+    // --- 1. SELEÇÃO DE ELEMENTOS DO DOM (jQuery) ---
+    const $serviceSelect = $('#service-select');
+    const $professionalSelect = $('#professional-select');
+    const $priceInfo = $('#service-price-info');
+    const $calendarStep = $('#calendar-step');
+    const $timeslotStep = $('#timeslot-step'); // Selecionando a etapa de horários
+
+    // --- 2. LÓGICA INICIAL (SELEÇÃO DE SERVIÇO) ---
+    $serviceSelect.on('change', function () {
+        const $selectedOption = $(this).find('option:selected');
+        
+        if ($selectedOption.val()) {
+            const price = parseFloat($selectedOption.data('price')).toFixed(2);
+            const priceType = $selectedOption.data('price-type');
+
+            let priceText = '';
+            if (priceType === 'FIXO') {
+                priceText = `Valor: R$ ${price.replace('.', ',')}`;
+            } else if (priceType === 'A_PARTIR_DE') {
+                priceText = `A partir de R$ ${price.replace('.', ',')}`;
+            }
+            $priceInfo.text(priceText);
+
+            $professionalSelect.prop('disabled', false);
+            $professionalSelect.find('option[disabled]').text('Selecione um profissional...');
+
+            $calendarStep.slideDown(); // Efeito de deslizar para mostrar
+        } else {
+            $priceInfo.text('');
+            $professionalSelect.prop('disabled', true);
+            $professionalSelect.find('option[disabled]').text('Primeiro, escolha um serviço');
+            $calendarStep.slideUp(); // Esconde com efeito
+            $timeslotStep.slideUp(); // Esconde também os horários
+        }
+    });
+
+    // --- 3. LÓGICA DO CALENDÁRIO DINÂMICO ---
+    const $currentMonthYear = $('#current-month-year');
+    const $calendarDays = $('#calendar-days');
+    const $prevMonthBtn = $('#prev-month-btn');
+    const $nextMonthBtn = $('#next-month-btn');
+
+    // Usando a data atual como ponto de partida
+    let currentDate = new Date(); // Data atual do sistema
+    currentDate.setDate(1); // Focamos no primeiro dia do mês
+
+    function renderCalendar() {
+        const month = currentDate.getMonth();
+        const year = currentDate.getFullYear();
+        
+        // Mapeia o nome do mês em português
+        const monthNames = ["Janeiro", "Fevereiro", "Março", "Abril", "Maio", "Junho", "Julho", "Agosto", "Setembro", "Outubro", "Novembro", "Dezembro"];
+        $currentMonthYear.text(`${monthNames[month]} ${year}`);
+
+        $calendarDays.empty(); // Limpa os dias anteriores
+
+        const firstDayOfMonth = new Date(year, month, 1).getDay();
+        const daysInMonth = new Date(year, month + 1, 0).getDate();
+
+        // Adiciona células vazias para os dias antes do início do mês
+        for (let i = 0; i < firstDayOfMonth; i++) {
+            $calendarDays.append('<div class="calendar-day empty"></div>');
+        }
+
+        // Adiciona os dias do mês
+        const today = new Date();
+        for (let day = 1; day <= daysInMonth; day++) {
+            const dayDate = new Date(year, month, day);
+            const $dayCell = $(`<div class="calendar-day">${day}</div>`);
+            
+            // Adiciona classe para o dia de hoje
+            if (day === today.getDate() && month === today.getMonth() && year === today.getFullYear()) {
+                $dayCell.addClass('today');
+            }
+
+            // Lógica de disponibilidade (por enquanto, todos disponíveis a partir de hoje)
+            if (dayDate < today.setHours(0,0,0,0)) {
+                $dayCell.addClass('unavailable');
+            } else {
+                // Aqui virá a lógica para verificar com o backend se o dia tem horários
+                $dayCell.addClass('available'); 
+                $dayCell.data('date', `${year}-${String(month + 1).padStart(2, '0')}-${String(day).padStart(2, '0')}`);
+            }
+
+            $calendarDays.append($dayCell);
+        }
+    }
+
+    $prevMonthBtn.on('click', function () {
+        currentDate.setMonth(currentDate.getMonth() - 1);
+        renderCalendar();
+    });
+
+    $nextMonthBtn.on('click', function () {
+        currentDate.setMonth(currentDate.getMonth() + 1);
+        renderCalendar();
+    });
+
+    // Evento de clique nos dias do calendário
+    $calendarDays.on('click', '.calendar-day.available', function() {
+        // Remove a seleção de qualquer outro dia
+        $('.calendar-day.selected').removeClass('selected');
+        // Adiciona a classe ao dia clicado
+        $(this).addClass('selected');
+
+        // Mostra a seção de horários
+        const selectedDate = $(this).data('date');
+        $('#selected-date-info').text(new Date(selectedDate + 'T00:00:00').toLocaleDateString('pt-BR'));
+        $timeslotStep.slideDown();
+
+        // **PRÓXIMO PASSO:** Aqui faremos a chamada ao backend (Java) para buscar os horários
+        // para a `selectedDate` e preencher a div `#available-times`.
+        $('#available-times').html('<p>Buscando horários...</p>'); // Feedback para o usuário
+    });
+
+    // Inicia o calendário quando a página carrega
+    renderCalendar();
+});

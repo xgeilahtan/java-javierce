@@ -309,11 +309,6 @@
     font-weight: bold;
   }
   
-  /* Formulário de Cadastro */
-  .genero {
-    
-  }
-
   /* Salvar Cadastro */
   
   form button {
@@ -534,3 +529,207 @@
   background-color: #f1f1f1;
 }
 
+/* ============================================= */
+/* == ESTILOS DA PÁGINA DE AGENDAMENTO == */
+/* ============================================= */
+
+/* Contêiner principal do formulário de agendamento */
+.booking-container {
+    max-width: 800px; /* Largura máxima para o formulário */
+    margin: 2rem auto; /* Centraliza na página */
+    padding: 2rem;
+    background-color: #ffffff; /* Fundo branco para destacar do cinza */
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.booking-step {
+    margin-bottom: 2.5rem; /* Espaçamento entre as etapas */
+}
+
+.booking-step h2 {
+    color: #350303; /* Usando a cor escura do seu tema */
+    font-size: 1.8rem;
+    text-align: left; /* Alinha os títulos das etapas à esquerda */
+    padding-bottom: 1rem;
+    border-bottom: 2px solid #B77D00; /* Usando a cor dourada do seu tema */
+    margin-bottom: 1.5rem;
+}
+
+/* Estilos para os campos de formulário */
+.form-group {
+    margin-bottom: 1.5rem;
+}
+
+.form-group label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 0.5rem;
+    color: #333;
+}
+
+.form-group select {
+    width: 100%;
+    padding: 0.75rem;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 1rem;
+}
+
+.form-group select:disabled {
+    background-color: #e9ecef; /* Cor padrão do Bootstrap/AdminLTE para campos desabilitados */
+}
+
+.price-info {
+    font-size: 0.9rem;
+    color: #6c757d;
+    margin-top: 0.5rem;
+    height: 1.2rem; /* Altura fixa para não "pular" o layout */
+}
+
+/* --- Estilos do Calendário --- */
+#calendar-container {
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    padding: 1rem;
+}
+
+.calendar-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1rem;
+}
+
+.calendar-header h3 {
+    margin: 0;
+    color: #350303;
+}
+
+.calendar-header button {
+    background-color: transparent;
+    border: 1px solid #B77D00;
+    color: #B77D00;
+    font-weight: bold;
+    border-radius: 50%;
+    width: 35px;
+    height: 35px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.calendar-header button:hover {
+    background-color: #B77D00;
+    color: #fff;
+}
+
+.calendar-grid, .calendar-weekdays {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 5px;
+    text-align: center;
+}
+
+.calendar-weekdays div {
+    font-weight: bold;
+    padding-bottom: 0.5rem;
+}
+
+.calendar-day {
+    padding: 0.8rem 0;
+    border: 1px solid transparent;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.calendar-day.unavailable {
+    color: #ccc;
+    cursor: not-allowed;
+    text-decoration: line-through;
+}
+
+.calendar-day.available:hover {
+    background-color: #f0e6d1; /* Um dourado mais claro para o hover */
+    border-color: #B77D00;
+}
+
+.calendar-day.selected {
+    background-color: #350303;
+    color: #fff;
+    border-color: #350303;
+}
+
+.calendar-day.today {
+    font-weight: bold;
+    border-color: #B77D00;
+}
+
+/* --- Estilos dos Horários --- */
+.times-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px; /* Espaçamento entre os botões de horário */
+}
+
+.time-slot {
+    padding: 0.75rem 1rem;
+    border: 1px solid #B77D00;
+    color: #B77D00;
+    background-color: #fff;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: all 0.3s ease;
+}
+
+.time-slot:hover {
+    background-color: #B77D00;
+    color: #fff;
+}
+
+.time-slot.selected {
+    background-color: #350303;
+    color: #fff;
+    border-color: #350303;
+}
+
+/* --- Estilos do Resumo --- */
+.summary-box {
+    background-color: #f8f9fa;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    padding: 1.5rem;
+    margin-top: 1.5rem;
+}
+
+.summary-box h3 {
+    color: #350303;
+    margin-top: 0;
+}
+
+.summary-box .disclaimer {
+    margin-top: 1rem;
+    padding-top: 1rem;
+    border-top: 1px solid #ddd;
+    font-size: 0.9rem;
+    color: #6c757d;
+}
+
+.cta-button {
+    width: 100%;
+    padding: 1rem;
+    font-size: 1.2rem;
+    font-weight: bold;
+    background-color: #B77D00;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 1.5rem;
+}
+
+.cta-button:disabled {
+    background-color: #ccc;
+    cursor: not-allowed;
+}
